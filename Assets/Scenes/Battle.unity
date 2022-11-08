@@ -2845,12 +2845,6 @@ MonoBehaviour:
   - {fileID: 1671826914}
   - {fileID: 455402709}
   - {fileID: 1552973467}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   minPos: {fileID: 306139570}
   maxPos: {fileID: 1967271867}
   cardPositions: []
