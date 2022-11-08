@@ -39,8 +39,11 @@ public class HandController : MonoBehaviour
         {
             cardPositions.Add(minPos.position + (distanceBetweenPoints * i));
 
-            heldCards[i].transform.position = cardPositions[i];
-            heldCards[i].transform.rotation = minPos.rotation;
+            // leave it here for reference purpose
+            // heldCards[i].transform.position = cardPositions[i];
+            // heldCards[i].transform.rotation = minPos.rotation;
+            // set card position
+            heldCards[i].MoveToPoint(cardPositions[i], minPos.rotation);
         }
     }
 }
