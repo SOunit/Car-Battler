@@ -44,6 +44,9 @@ public class HandController : MonoBehaviour
             // heldCards[i].transform.rotation = minPos.rotation;
             // set card position
             heldCards[i].MoveToPoint(cardPositions[i], minPos.rotation);
+
+            heldCards[i].inHand = true;
+            heldCards[i].handPosition = i;
         }
     }
 }
