@@ -12,6 +12,8 @@ public class DeckController : MonoBehaviour
     private List<CardScriptableObject>
         activeCards = new List<CardScriptableObject>();
 
+    public Card cardToSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,10 @@ public class DeckController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            DrawCardToHand();
+        }
     }
 
     public void SetupDeck()
@@ -39,5 +45,20 @@ public class DeckController : MonoBehaviour
 
             iteration++;
         }
+    }
+
+    public void DrawCardToHand()
+    {
+        if (activeCards.Count == 0)
+        {
+            SetupDeck();
+        }
+
+        Card newCard =
+            Instantiate(cardToSpawn, transform.position, transform.rotation);
+        newCard.cardSO = activeCards[0];
+        newCard.SetupCard();
+
+        activeCards.RemoveAt(0);
     }
 }
