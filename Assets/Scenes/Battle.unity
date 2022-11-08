@@ -5861,6 +5861,11 @@ MonoBehaviour:
   bgArt: {fileID: 941707725}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &732578786
 Transform:
   m_ObjectHideFlags: 0
@@ -6070,6 +6075,11 @@ MonoBehaviour:
   bgArt: {fileID: 1506127802}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &756478784
 Transform:
   m_ObjectHideFlags: 0
@@ -8538,6 +8548,11 @@ MonoBehaviour:
   bgArt: {fileID: 1911723045}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &1072256761
 Transform:
   m_ObjectHideFlags: 0
@@ -9067,6 +9082,11 @@ MonoBehaviour:
   bgArt: {fileID: 1483310820}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &1180830322
 Transform:
   m_ObjectHideFlags: 0
@@ -12933,6 +12953,11 @@ MonoBehaviour:
   bgArt: {fileID: 1457864026}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &1635003957
 Transform:
   m_ObjectHideFlags: 0
@@ -13296,6 +13321,11 @@ MonoBehaviour:
   bgArt: {fileID: 2057830028}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!65 &1671826915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14266,6 +14296,11 @@ MonoBehaviour:
   bgArt: {fileID: 285676838}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &1851829372
 Transform:
   m_ObjectHideFlags: 0
@@ -14702,7 +14737,7 @@ GameObject:
   - component: {fileID: 1895625350}
   - component: {fileID: 1895625349}
   - component: {fileID: 1895625348}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Desktop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15635,6 +15670,11 @@ MonoBehaviour:
   bgArt: {fileID: 180906789}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &1974455029
 Transform:
   m_ObjectHideFlags: 0
@@ -16471,6 +16511,11 @@ MonoBehaviour:
   bgArt: {fileID: 958024445}
   moveSpeed: 5
   rotateSpeed: 540
+  inHand: 0
+  handPosition: 0
+  whatIsDesktop:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &2136239581
 Transform:
   m_ObjectHideFlags: 0

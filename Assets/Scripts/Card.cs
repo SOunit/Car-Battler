@@ -44,12 +44,19 @@ public class Card : MonoBehaviour
 
     private HandController theHC;
 
+    private bool isSelected;
+
+    private Collider theCol;
+
+    public LayerMask whatIsDesktop;
+
     // Start is called before the first frame update
     void Start()
     {
         SetupCard();
 
         theHC = FindObjectOfType<HandController>();
+        theCol = GetComponent<Collider>();
     }
 
     public void SetupCard()
@@ -84,6 +91,17 @@ public class Card : MonoBehaviour
                 .RotateTowards(transform.rotation,
                 targetRot,
                 rotateSpeed * Time.deltaTime);
+
+        if (isSelected)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f, whatIsDesktop))
+            {
+                MoveToPoint(hit.point + new Vector3(0f, 2f, 0f),
+                Quaternion.identity);
+            }
+        }
     }
 
     public void MoveToPoint(Vector3 pointToMoveTo, Quaternion rotToMatch)
@@ -108,6 +126,15 @@ public class Card : MonoBehaviour
         {
             MoveToPoint(theHC.cardPositions[handPosition],
             theHC.minPos.rotation);
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (inHand)
+        {
+            isSelected = true;
+            theCol.enabled = false;
         }
     }
 }
