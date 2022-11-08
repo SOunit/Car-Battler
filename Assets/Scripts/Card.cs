@@ -125,17 +125,28 @@ public class Card : MonoBehaviour
                         selectedPoint.isPlayerPoint
                     )
                     {
-                        selectedPoint.activeCard = this;
-                        assignedPlace = selectedPoint;
+                        if (BattleController.instance.playerMana >= manaCost)
+                        {
+                            selectedPoint.activeCard = this;
+                            assignedPlace = selectedPoint;
 
-                        MoveToPoint(selectedPoint.transform.position,
-                        Quaternion.identity);
+                            MoveToPoint(selectedPoint.transform.position,
+                            Quaternion.identity);
 
-                        inHand = false;
+                            inHand = false;
 
-                        isSelected = false;
+                            isSelected = false;
 
-                        theHC.RemoveCardFromHand(this);
+                            theHC.RemoveCardFromHand(this);
+
+                            BattleController.instance.SpendPlayerMana (
+                                manaCost
+                            );
+                        }
+                        else
+                        {
+                            ReturnToHand();
+                        }
                     }
                     else
                     {
