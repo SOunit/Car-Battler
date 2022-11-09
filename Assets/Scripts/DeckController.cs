@@ -6,6 +6,11 @@ public class DeckController : MonoBehaviour
 {
     public static DeckController instance;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public List<CardScriptableObject>
         deckToUse = new List<CardScriptableObject>();
 
@@ -13,6 +18,8 @@ public class DeckController : MonoBehaviour
         activeCards = new List<CardScriptableObject>();
 
     public Card cardToSpawn;
+
+    public int drawCardCost = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +30,10 @@ public class DeckController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            DrawCardToHand();
-        }
+        // if (Input.GetKeyDown(KeyCode.T))
+        // {
+        //     DrawCardToHand();
+        // }
     }
 
     public void SetupDeck()
@@ -61,5 +68,19 @@ public class DeckController : MonoBehaviour
 
         activeCards.RemoveAt(0);
         HandController.instance.AddCardToHand (newCard);
+    }
+
+    public void DrawCardForMana()
+    {
+        if (BattleController.instance.playerMana >= drawCardCost)
+        {
+            DrawCardToHand();
+            BattleController.instance.SpendPlayerMana (drawCardCost);
+        }
+        else
+        {
+            UIController.instance.ShowManaWarning();
+            UIController.instance.drawCardButton.SetActive(false);
+        }
     }
 }
