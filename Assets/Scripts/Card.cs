@@ -8,6 +8,8 @@ public class Card : MonoBehaviour
 {
     public CardScriptableObject cardSO;
 
+    public bool isPlayer;
+
     public int currentHealth;
 
     public int
@@ -60,6 +62,12 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (targetPoint == Vector3.zero)
+        {
+            targetPoint = transform.position;
+            targetRot = transform.rotation;
+        }
+
         SetupCard();
 
         theHC = FindObjectOfType<HandController>();
@@ -177,7 +185,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (inHand)
+        if (inHand && isPlayer)
         {
             MoveToPoint(theHC.cardPositions[handPosition] +
             new Vector3(0f, 1f, .5f),
@@ -187,7 +195,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (inHand)
+        if (inHand && isPlayer)
         {
             MoveToPoint(theHC.cardPositions[handPosition],
             theHC.minPos.rotation);
@@ -199,7 +207,8 @@ public class Card : MonoBehaviour
         if (
             inHand &&
             BattleController.instance.currentPhase ==
-            BattleController.TurnOrder.playerActive
+            BattleController.TurnOrder.playerActive &&
+            isPlayer
         )
         {
             isSelected = true;

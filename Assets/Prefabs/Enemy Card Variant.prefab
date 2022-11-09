@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 3526250208547541916, guid: 6cbb4c0bd283c4b0ba915a1218a11839,
         type: 3}
       propertyPath: m_Name
-      value: Enemy Card
+      value: Enemy Card Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3526250208547541916, guid: 6cbb4c0bd283c4b0ba915a1218a11839,
         type: 3}
@@ -85,6 +85,11 @@ PrefabInstance:
     - target: {fileID: 3526250208547541917, guid: 6cbb4c0bd283c4b0ba915a1218a11839,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3526250208547541918, guid: 6cbb4c0bd283c4b0ba915a1218a11839,
+        type: 3}
+      propertyPath: isPlayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3526250208673116405, guid: 6cbb4c0bd283c4b0ba915a1218a11839,
