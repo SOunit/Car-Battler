@@ -20,6 +20,16 @@ public class BattleController : MonoBehaviour
 
     public int startingCardAmount = 5;
 
+    public enum TurnOrder
+    {
+        playerActive,
+        playerCardAttacks,
+        enemyActive,
+        enemyCardAttacks
+    }
+
+    public TurnOrder currentPhase;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +42,10 @@ public class BattleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AdvanceTurn();
+        }
     }
 
     public void SpendPlayerMana(int amountToSpend)
@@ -44,5 +58,38 @@ public class BattleController : MonoBehaviour
         }
 
         UIController.instance.SetPlayerManaText (playerMana);
+    }
+
+    public void AdvanceTurn()
+    {
+        currentPhase++;
+
+        if (
+            (int) currentPhase >=
+            System.Enum.GetValues(typeof (TurnOrder)).Length
+        )
+        {
+            currentPhase = 0;
+        }
+
+        switch (currentPhase)
+        {
+            case TurnOrder.playerActive:
+                break;
+            case TurnOrder.playerCardAttacks:
+                Debug.Log("skipping player card attacks");
+                AdvanceTurn();
+                break;
+            case TurnOrder.enemyActive:
+                Debug.Log("skipping enemy action");
+                AdvanceTurn();
+                break;
+            case TurnOrder.enemyCardAttacks:
+                Debug.Log("skipping enemy card attacks");
+                AdvanceTurn();
+                break;
+            default:
+                break;
+        }
     }
 }
