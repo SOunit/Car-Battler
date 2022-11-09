@@ -33,8 +33,7 @@ public class BattleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerMana = startingMana;
-        UIController.instance.SetPlayerManaText (playerMana);
+        FillPlayerMana();
 
         DeckController.instance.DrawMultipleCards (startingCardAmount);
     }
@@ -60,6 +59,12 @@ public class BattleController : MonoBehaviour
         UIController.instance.SetPlayerManaText (playerMana);
     }
 
+    public void FillPlayerMana()
+    {
+        playerMana = startingMana;
+        UIController.instance.SetPlayerManaText (playerMana);
+    }
+
     public void AdvanceTurn()
     {
         currentPhase++;
@@ -77,11 +82,14 @@ public class BattleController : MonoBehaviour
             case TurnOrder.playerActive:
                 UIController.instance.endTurnButton.SetActive(true);
                 UIController.instance.drawCardButton.SetActive(true);
+
+                FillPlayerMana();
+
                 break;
             case TurnOrder.playerCardAttacks:
                 Debug.Log("skipping player card attacks");
 
-                // AdvanceTurn();
+                AdvanceTurn();
                 break;
             case TurnOrder.enemyActive:
                 Debug.Log("skipping enemy action");
