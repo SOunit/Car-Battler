@@ -34,6 +34,8 @@ public class BattleController : MonoBehaviour
 
     public TurnOrder currentPhase;
 
+    public Transform discardPoint;
+
     // Start is called before the first frame update
     void Start()
     {

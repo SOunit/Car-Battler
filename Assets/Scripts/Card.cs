@@ -233,7 +233,10 @@ public class Card : MonoBehaviour
 
             assignedPlace.activeCard = null;
 
-            Destroy (gameObject);
+            MoveToPoint(BattleController.instance.discardPoint.position,
+            BattleController.instance.discardPoint.rotation);
+
+            Destroy(gameObject, 5f);
         }
 
         UpdateCardDisplay();
