@@ -47,6 +47,8 @@ public class CardPointsController : MonoBehaviour
                     enemyCardPoints[i]
                         .activeCard
                         .DamageCard(playerCardPoints[i].activeCard.attackPower);
+
+                    playerCardPoints[i].activeCard.anim.SetTrigger("Attack");
                 }
                 else
                 {
