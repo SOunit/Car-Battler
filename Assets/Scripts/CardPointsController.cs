@@ -57,6 +57,33 @@ public class CardPointsController : MonoBehaviour
             }
         }
 
+        CheckAssignedCards();
+
         BattleController.instance.AdvanceTurn();
+    }
+
+    public void CheckAssignedCards()
+    {
+        foreach (var point in enemyCardPoints)
+        {
+            if (point.activeCard != null)
+            {
+                if (point.activeCard.currentHealth <= 0)
+                {
+                    point.activeCard = null;
+                }
+            }
+        }
+
+        foreach (var point in playerCardPoints)
+        {
+            if (point.activeCard != null)
+            {
+                if (point.activeCard.currentHealth <= 0)
+                {
+                    point.activeCard = null;
+                }
+            }
+        }
     }
 }
