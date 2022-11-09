@@ -18,11 +18,15 @@ public class BattleController : MonoBehaviour
 
     public int playerMana;
 
+    public int startingCardAmount = 5;
+
     // Start is called before the first frame update
     void Start()
     {
         playerMana = startingMana;
         UIController.instance.SetPlayerManaText (playerMana);
+
+        DeckController.instance.DrawMultipleCards (startingCardAmount);
     }
 
     // Update is called once per frame
