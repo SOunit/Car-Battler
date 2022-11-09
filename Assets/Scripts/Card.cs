@@ -80,9 +80,7 @@ public class Card : MonoBehaviour
         attackPower = cardSO.attackPower;
         manaCost = cardSO.manaCost;
 
-        healthText.text = currentHealth.ToString();
-        attackText.text = attackPower.ToString();
-        manaCostText.text = manaCost.ToString();
+        UpdateCardDisplay();
 
         nameText.text = cardSO.cardName;
         actionDescriptionText.text = cardSO.actionDescription;
@@ -224,5 +222,27 @@ public class Card : MonoBehaviour
         theCol.enabled = true;
 
         MoveToPoint(theHC.cardPositions[handPosition], theHC.minPos.rotation);
+    }
+
+    public void DamageCard(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+
+            assignedPlace.activeCard = null;
+
+            Destroy (gameObject);
+        }
+
+        UpdateCardDisplay();
+    }
+
+    public void UpdateCardDisplay()
+    {
+        healthText.text = currentHealth.ToString();
+        attackText.text = attackPower.ToString();
+        manaCostText.text = manaCost.ToString();
     }
 }
