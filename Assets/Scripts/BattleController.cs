@@ -22,6 +22,8 @@ public class BattleController : MonoBehaviour
 
     public int startingCardAmount = 5;
 
+    public int cardsToDrawPerTurn = 1;
+
     public enum TurnOrder
     {
         playerActive,
@@ -92,6 +94,8 @@ public class BattleController : MonoBehaviour
                 }
 
                 FillPlayerMana();
+
+                DeckController.instance.DrawMultipleCards (cardsToDrawPerTurn);
 
                 break;
             case TurnOrder.playerCardAttacks:
