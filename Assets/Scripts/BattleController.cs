@@ -50,7 +50,9 @@ public class BattleController : MonoBehaviour
     void Start()
     {
         currentPlayerMaxMana = startingMana;
+        currentEnemyMaxMana = startingMana;
         FillPlayerMana();
+        FillEnemyMana();
 
         DeckController.instance.DrawMultipleCards (startingCardAmount);
 
@@ -83,6 +85,12 @@ public class BattleController : MonoBehaviour
     {
         playerMana = currentPlayerMaxMana;
         UIController.instance.SetPlayerManaText (playerMana);
+    }
+
+    public void FillEnemyMana()
+    {
+        enemyMana = currentEnemyMaxMana;
+        UIController.instance.SetEnemyManaText (enemyMana);
     }
 
     public void AdvanceTurn()
