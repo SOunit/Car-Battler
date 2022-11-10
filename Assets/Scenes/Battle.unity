@@ -1031,6 +1031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManaText: {fileID: 494932056}
+  playerHealthText: {fileID: 1111495500}
+  enemyHealthText: {fileID: 961533675}
   manaWarning: {fileID: 658709576}
   manaWarningTime: 2
   drawCardButton: {fileID: 1818929833}

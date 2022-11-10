@@ -12,7 +12,11 @@ public class UIController : MonoBehaviour
         instance = this;
     }
 
-    public TMP_Text playerManaText;
+    public TMP_Text
+
+            playerManaText,
+            playerHealthText,
+            enemyHealthText;
 
     public GameObject manaWarning;
 
@@ -47,6 +51,16 @@ public class UIController : MonoBehaviour
     public void SetPlayerManaText(int manaAmount)
     {
         playerManaText.text = "Mana : " + manaAmount;
+    }
+
+    public void SetPlayerHealthText(int healthAmount)
+    {
+        playerHealthText.text = $"Player Health : {healthAmount}";
+    }
+
+    public void SetEnemyHealthText(int healthAmount)
+    {
+        enemyHealthText.text = $"Enemy Health : {healthAmount}";
     }
 
     public void ShowManaWarning()
