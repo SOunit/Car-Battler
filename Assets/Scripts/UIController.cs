@@ -29,6 +29,11 @@ public class UIController : MonoBehaviour
             drawCardButton,
             endTurnButton;
 
+    public UIDamageIndicator
+
+            playerDamage,
+            enemyDamage;
+
     // Start is called before the first frame update
     void Start()
     {
