@@ -24,6 +24,8 @@ public class BattleController : MonoBehaviour
 
     public int cardsToDrawPerTurn = 1;
 
+    public int playerHealth;
+
     public enum TurnOrder
     {
         playerActive,
@@ -121,5 +123,20 @@ public class BattleController : MonoBehaviour
         UIController.instance.endTurnButton.SetActive(false);
         UIController.instance.drawCardButton.SetActive(false);
         AdvanceTurn();
+    }
+
+    public void DamagePlayer(int damageAmount)
+    {
+        if (playerHealth > 0)
+        {
+            playerHealth -= damageAmount;
+
+            if (playerHealth <= 0)
+            {
+                playerHealth = 0;
+
+                // end battle
+            }
+        }
     }
 }
