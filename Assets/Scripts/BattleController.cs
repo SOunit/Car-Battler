@@ -87,6 +87,18 @@ public class BattleController : MonoBehaviour
         UIController.instance.SetPlayerManaText (playerMana);
     }
 
+    public void SpendEnemyMana(int amountToSpend)
+    {
+        enemyMana = enemyMana - amountToSpend;
+
+        if (enemyMana < 0)
+        {
+            enemyMana = 0;
+        }
+
+        UIController.instance.SetEnemyManaText (enemyMana);
+    }
+
     public void FillEnemyMana()
     {
         enemyMana = currentEnemyMaxMana;
