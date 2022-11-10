@@ -125,6 +125,13 @@ public class BattleController : MonoBehaviour
                 CardPointsController.instance.PlayerAttack();
                 break;
             case TurnOrder.enemyActive:
+                if (currentEnemyMaxMana < maxMana)
+                {
+                    currentEnemyMaxMana++;
+                }
+
+                FillEnemyMana();
+
                 EnemyController.instance.StartAction();
                 break;
             case TurnOrder.enemyCardAttacks:
