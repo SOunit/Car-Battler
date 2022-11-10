@@ -1382,6 +1382,7 @@ MonoBehaviour:
   startingCardAmount: 5
   cardsToDrawPerTurn: 1
   playerHealth: 50
+  enemyHealth: 50
   currentPhase: 0
   discardPoint: {fileID: 1642864571}
 --- !u!1 &934989474

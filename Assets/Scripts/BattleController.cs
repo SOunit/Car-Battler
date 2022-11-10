@@ -26,6 +26,8 @@ public class BattleController : MonoBehaviour
 
     public int playerHealth;
 
+    public int enemyHealth;
+
     public enum TurnOrder
     {
         playerActive,
@@ -134,6 +136,21 @@ public class BattleController : MonoBehaviour
             if (playerHealth <= 0)
             {
                 playerHealth = 0;
+
+                // end battle
+            }
+        }
+    }
+
+    public void DamageEnemy(int damageAmount)
+    {
+        if (enemyHealth > 0)
+        {
+            enemyHealth -= damageAmount;
+
+            if (enemyHealth <= 0)
+            {
+                enemyHealth = 0;
 
                 // end battle
             }
