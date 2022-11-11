@@ -84,6 +84,24 @@ public class EnemyController : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
+        if (enemyAIType != AIType.placeFromDeck)
+        {
+            for (
+                int i = 0;
+                i < BattleController.instance.cardsToDrawPerTurn;
+                i++
+            )
+            {
+                cardsInHand.Add(activeCards[0]);
+                activeCards.RemoveAt(0);
+
+                if (activeCards.Count == 0)
+                {
+                    SetupDeck();
+                }
+            }
+        }
+
         List<CardPlacePoint> cardPoints = new List<CardPlacePoint>();
         cardPoints.AddRange(CardPointsController.instance.enemyCardPoints);
 
