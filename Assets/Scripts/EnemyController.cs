@@ -245,6 +245,68 @@ public class EnemyController : MonoBehaviour
 
                 break;
             case AIType.handAttacking:
+                selectedCard = SelectedCardToPlay();
+
+                preferredPoints.Clear();
+                secondaryPoints.Clear();
+
+                for (int i = 0; i < cardPoints.Count; i++)
+                {
+                    if (cardPoints[i].activeCard == null)
+                    {
+                        if (
+                            CardPointsController
+                                .instance
+                                .playerCardPoints[i]
+                                .activeCard ==
+                            null
+                        )
+                        {
+                            preferredPoints.Add(cardPoints[i]);
+                        }
+                        else
+                        {
+                            secondaryPoints.Add(cardPoints[i]);
+                        }
+                    }
+                }
+
+                iterations = 50;
+                while (selectedCard != null &&
+                    iterations > 0 &&
+                    preferredPoints.Count + secondaryPoints.Count > 0
+                )
+                {
+                    // pick a point to use
+                    if (preferredPoints.Count > 0)
+                    {
+                        int selectPoint =
+                            Random.Range(0, preferredPoints.Count);
+                        selectedPoint = preferredPoints[selectPoint];
+
+                        preferredPoints.RemoveAt (selectPoint);
+                    }
+                    else
+                    {
+                        int selectPoint =
+                            Random.Range(0, secondaryPoints.Count);
+                        selectedPoint = secondaryPoints[selectPoint];
+
+                        secondaryPoints.RemoveAt (selectPoint);
+                    }
+
+                    PlayCard (selectedCard, selectedPoint);
+
+                    // check if we should try play another
+                    selectedCard = SelectedCardToPlay();
+
+                    iterations--;
+
+                    yield return new WaitForSeconds(CardPointsController
+                                .instance
+                                .timeBetweenAttacks);
+                }
+
                 break;
         }
 
