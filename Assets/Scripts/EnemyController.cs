@@ -132,9 +132,31 @@ public class EnemyController : MonoBehaviour
             case AIType.handRandomPlace:
                 selectedCard = SelectedCardToPlay();
 
-                if (selectedCard != null)
+                iterations = 50;
+                while (selectedCard != null &&
+                    iterations > 0 &&
+                    selectedPoint.activeCard == null
+                )
                 {
                     PlayCard (selectedCard, selectedPoint);
+
+                    // check if we should try play another card
+                    selectedCard = SelectedCardToPlay();
+
+                    iterations--;
+
+                    yield return new WaitForSeconds(CardPointsController
+                                .instance
+                                .timeBetweenAttacks);
+
+                    while (selectedPoint.activeCard != null &&
+                        cardPoints.Count > 0
+                    )
+                    {
+                        randomPoint = Random.Range(0, cardPoints.Count);
+                        selectedPoint = cardPoints[randomPoint];
+                        cardPoints.RemoveAt (randomPoint);
+                    }
                 }
 
                 break;
