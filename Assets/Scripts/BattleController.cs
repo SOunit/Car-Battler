@@ -50,6 +50,9 @@ public class BattleController : MonoBehaviour
 
     public float resultScreenDelayTime = 1f;
 
+    [Range(0f, 1f)]
+    public float playerFirstChange = .5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +65,12 @@ public class BattleController : MonoBehaviour
 
         UIController.instance.SetPlayerHealthText (playerHealth);
         UIController.instance.SetEnemyHealthText (enemyHealth);
+
+        if (Random.value > playerFirstChange)
+        {
+            currentPhase = TurnOrder.playerCardAttacks;
+            AdvanceTurn();
+        }
     }
 
     // Update is called once per frame
