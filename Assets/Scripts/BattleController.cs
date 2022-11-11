@@ -223,6 +223,15 @@ public class BattleController : MonoBehaviour
 
         HandController.instance.EmptyHand();
 
+        if (enemyHealth <= 0)
+        {
+            UIController.instance.battleResultText.text = "YOU WON!";
+        }
+        else
+        {
+            UIController.instance.battleResultText.text = "YOU LOST!";
+        }
+
         StartCoroutine(ShowResultCo());
     }
 

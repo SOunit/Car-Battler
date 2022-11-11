@@ -1423,6 +1423,7 @@ MonoBehaviour:
   playerDamage: {fileID: 1431223101}
   enemyDamage: {fileID: 874265511}
   battleEndScreen: {fileID: 603951829}
+  battleResultText: {fileID: 944687503}
 --- !u!1 &642510543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,6 +2102,7 @@ MonoBehaviour:
   currentPhase: 0
   discardPoint: {fileID: 1642864571}
   battleEnded: 0
+  resultScreenDelayTime: 1
 --- !u!1 &874265509
 GameObject:
   m_ObjectHideFlags: 0
