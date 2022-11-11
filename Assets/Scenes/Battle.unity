@@ -1164,7 +1164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &603951830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1422,6 +1422,7 @@ MonoBehaviour:
   endTurnButton: {fileID: 442308335}
   playerDamage: {fileID: 1431223101}
   enemyDamage: {fileID: 874265511}
+  battleEndScreen: {fileID: 603951829}
 --- !u!1 &642510543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,7 +1623,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 625686334}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: EndPlayerTurn
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2338,7 +2339,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 625686334}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: EndPlayerTurn
+        m_MethodName: ChooseNewBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2532,7 +2533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 625686334}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: EndPlayerTurn
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
