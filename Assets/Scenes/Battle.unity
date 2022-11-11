@@ -1451,16 +1451,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f161c4c2303ee41a9937f65faa6e0747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingMana: 4
+  startingMana: 40
   maxMana: 12
   playerMana: 0
   enemyMana: 0
   startingCardAmount: 5
   cardsToDrawPerTurn: 1
-  playerHealth: 50
-  enemyHealth: 50
+  playerHealth: 1
+  enemyHealth: 1
   currentPhase: 0
   discardPoint: {fileID: 1642864571}
+  battleEnded: 0
 --- !u!1 &874265509
 GameObject:
   m_ObjectHideFlags: 0

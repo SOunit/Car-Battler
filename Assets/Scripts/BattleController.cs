@@ -46,6 +46,8 @@ public class BattleController : MonoBehaviour
 
     public Transform discardPoint;
 
+    public bool battleEnded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,51 +109,56 @@ public class BattleController : MonoBehaviour
 
     public void AdvanceTurn()
     {
-        currentPhase++;
-
-        if (
-            (int) currentPhase >=
-            System.Enum.GetValues(typeof (TurnOrder)).Length
-        )
+        if (!battleEnded)
         {
-            currentPhase = 0;
-        }
+            currentPhase++;
 
-        switch (currentPhase)
-        {
-            case TurnOrder.playerActive:
-                UIController.instance.endTurnButton.SetActive(true);
-                UIController.instance.drawCardButton.SetActive(true);
+            if (
+                (int) currentPhase >=
+                System.Enum.GetValues(typeof (TurnOrder)).Length
+            )
+            {
+                currentPhase = 0;
+            }
 
-                if (currentPlayerMaxMana < maxMana)
-                {
-                    currentPlayerMaxMana++;
-                }
+            switch (currentPhase)
+            {
+                case TurnOrder.playerActive:
+                    UIController.instance.endTurnButton.SetActive(true);
+                    UIController.instance.drawCardButton.SetActive(true);
 
-                FillPlayerMana();
+                    if (currentPlayerMaxMana < maxMana)
+                    {
+                        currentPlayerMaxMana++;
+                    }
 
-                DeckController.instance.DrawMultipleCards (cardsToDrawPerTurn);
+                    FillPlayerMana();
 
-                break;
-            case TurnOrder.playerCardAttacks:
-                CardPointsController.instance.PlayerAttack();
-                break;
-            case TurnOrder.enemyActive:
-                if (currentEnemyMaxMana < maxMana)
-                {
-                    currentEnemyMaxMana++;
-                }
+                    DeckController.instance.DrawMultipleCards (
+                        cardsToDrawPerTurn
+                    );
 
-                FillEnemyMana();
+                    break;
+                case TurnOrder.playerCardAttacks:
+                    CardPointsController.instance.PlayerAttack();
+                    break;
+                case TurnOrder.enemyActive:
+                    if (currentEnemyMaxMana < maxMana)
+                    {
+                        currentEnemyMaxMana++;
+                    }
 
-                EnemyController.instance.StartAction();
-                break;
-            case TurnOrder.enemyCardAttacks:
-                CardPointsController.instance.EnemyAttack();
+                    FillEnemyMana();
 
-                break;
-            default:
-                break;
+                    EnemyController.instance.StartAction();
+                    break;
+                case TurnOrder.enemyCardAttacks:
+                    CardPointsController.instance.EnemyAttack();
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -164,7 +171,7 @@ public class BattleController : MonoBehaviour
 
     public void DamagePlayer(int damageAmount)
     {
-        if (playerHealth > 0)
+        if (playerHealth > 0 || !battleEnded)
         {
             playerHealth -= damageAmount;
 
@@ -172,7 +179,7 @@ public class BattleController : MonoBehaviour
             {
                 playerHealth = 0;
 
-                // end battle
+                EndBattle();
             }
 
             UIController.instance.SetPlayerHealthText (playerHealth);
@@ -187,7 +194,7 @@ public class BattleController : MonoBehaviour
 
     public void DamageEnemy(int damageAmount)
     {
-        if (enemyHealth > 0)
+        if (enemyHealth > 0 || !battleEnded)
         {
             enemyHealth -= damageAmount;
 
@@ -195,7 +202,7 @@ public class BattleController : MonoBehaviour
             {
                 enemyHealth = 0;
 
-                // end battle
+                EndBattle();
             }
 
             UIController.instance.SetEnemyHealthText (enemyHealth);
@@ -206,5 +213,10 @@ public class BattleController : MonoBehaviour
             damageClone.damageText.text = damageAmount.ToString();
             damageClone.gameObject.SetActive(true);
         }
+    }
+
+    void EndBattle()
+    {
+        battleEnded = true;
     }
 }
