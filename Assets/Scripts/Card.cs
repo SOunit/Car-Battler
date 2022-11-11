@@ -107,7 +107,11 @@ public class Card : MonoBehaviour
                 targetRot,
                 rotateSpeed * Time.deltaTime);
 
-        if (isSelected)
+        if (
+            isSelected &&
+            !BattleController.instance.battleEnded &&
+            Time.timeScale != 0f
+        )
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -216,7 +220,8 @@ public class Card : MonoBehaviour
             BattleController.instance.currentPhase ==
             BattleController.TurnOrder.playerActive &&
             isPlayer &&
-            !BattleController.instance.battleEnded
+            !BattleController.instance.battleEnded &&
+            Time.timeScale != 0f
         )
         {
             isSelected = true;
