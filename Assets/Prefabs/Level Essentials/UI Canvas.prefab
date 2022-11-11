@@ -1996,6 +1996,8 @@ MonoBehaviour:
   enemyDamage: {fileID: 8475694800284844801}
   battleEndScreen: {fileID: 8475694800567872115}
   battleResultText: {fileID: 8475694800489181481}
+  mainMenuScene: MainMenu
+  battleSelectScene: Battle Select
 --- !u!1 &8475694800567872115
 GameObject:
   m_ObjectHideFlags: 0
