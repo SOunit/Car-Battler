@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7a2e6d57dc9d648e18ea3015eb1f24cf
   - enabled: 1
-    path: Assets/Scenes/Battle.unity
+    path: Assets/Scenes/Battle Select.unity
+    guid: 069036bf7ab32422c8d3c6fd7df40641
+  - enabled: 1
+    path: Assets/Scenes/Battle 1.unity
     guid: c96a20cfa1eb34de594632f3be45b381
+  - enabled: 1
+    path: Assets/Scenes/Battle 2.unity
+    guid: 6edadf451342c4034a8d68232cdf6c61
+  - enabled: 1
+    path: Assets/Scenes/Battle 3.unity
+    guid: 85b88df9846cd4d8491ae398306c3173
   m_configObjects: {}
