@@ -226,10 +226,33 @@ public class BattleController : MonoBehaviour
         if (enemyHealth <= 0)
         {
             UIController.instance.battleResultText.text = "YOU WON!";
+
+            foreach (var point in CardPointsController.instance.enemyCardPoints)
+            {
+                if (point.activeCard != null)
+                {
+                    point
+                        .activeCard
+                        .MoveToPoint(discardPoint.position,
+                        point.activeCard.transform.rotation);
+                }
+            }
         }
         else
         {
             UIController.instance.battleResultText.text = "YOU LOST!";
+
+            foreach (var point in CardPointsController.instance.playerCardPoints
+            )
+            {
+                if (point.activeCard != null)
+                {
+                    point
+                        .activeCard
+                        .MoveToPoint(discardPoint.position,
+                        point.activeCard.transform.rotation);
+                }
+            }
         }
 
         StartCoroutine(ShowResultCo());
